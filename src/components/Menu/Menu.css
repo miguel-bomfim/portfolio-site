@@ -1,0 +1,41 @@
+.navBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  background-color: white;
+}
+
+.navBarItem {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.navBarItem::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: relative;
+  background: transparent;
+  border: 1.5px solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 12px;
+  transition: background 1s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.navBarItemSelected::before {
+  background: black;
+}
+
+@media (max-width: 600px) {
+  .headerMenu {
+    padding: 14px;
+  }
+}

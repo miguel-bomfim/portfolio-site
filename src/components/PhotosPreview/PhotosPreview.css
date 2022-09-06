@@ -1,0 +1,27 @@
+.imagePreviewContainer:hover img {
+  filter: brightness(1);
+}
+
+.imagePreview {
+  width: 100%;
+  position: relative;
+  filter: brightness(0.5);
+  transition: 200ms;
+}
+
+.imagePreviewLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 800;
+  font-size: 24px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .imagePreviewLabel {
+    font-size: 18px;
+  }
+}

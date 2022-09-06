@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import InteractiveCursor from "./components/InteractiveCursor";
+import Menu from "./components/Menu";
+import PortfolioPage from "./pages/Portifolio/PortfolioPage";
+import PortfolioPhotos from "./pages/Portifolio/PortfolioPhotos";
+import About from "./pages/About";
+import InteractiveCursor from "./components/InteractiveCursor";
+import Home from "./pages/Home";
+
+import { useHome, usePortfolios } from "./services";
+import useMobile from "./hooks/useMobile";
 
 function App() {
+  const { data: homeData, isLoading: isLoadingHome } = useHome();
+  const { data: posts } = usePortfolios();
+  const isMobile = useMobile();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Menu />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home name={homeData?.name} homeImage={homeData?.homeImage.url} />
+          }
+        />
+        <Route path="/portfolio" element={<PortfolioPage posts={posts} />} />
+        <Route path="portfolio/:slug" element={<PortfolioPhotos />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      {/* {!isMobile && <InteractiveCursor />} */}
+    </BrowserRouter>
   );
 }
 
