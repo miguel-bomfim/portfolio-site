@@ -3,7 +3,6 @@
 }
 
 .imagePreview {
-  width: 100%;
   position: relative;
   filter: brightness(0.5);
   transition: 200ms;

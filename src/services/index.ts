@@ -39,10 +39,14 @@ export const usePortfolios = () => {
             title
             thumbnail {
               url
+              height
+              width
             }
-            photos(first: 20) {
+            photos(first: 40) {
               id
               url
+              width
+              height
             }
             slug
           }

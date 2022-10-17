@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 
 import { useHome, usePortfolios } from "./services";
 import useMobile from "./hooks/useMobile";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function App() {
   const { data: homeData, isLoading: isLoadingHome } = useHome();
