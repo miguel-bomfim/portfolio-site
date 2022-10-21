@@ -4,8 +4,6 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import "./PhotosPreview.css";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
 interface CardPreviewProps {
   title: string;
   thumbnail: {
@@ -32,13 +30,11 @@ const PhotosPreview: FC<Posts> = ({ posts }) => {
             to={`/portfolio/${post?.slug}`}
             state={post.photos}
           >
-            <LazyLoadImage
+            <img
               className="imagePreview"
               src={`${post.thumbnail.url}?w=248&fit=crop&auto=format`}
               alt={post.title}
-              height="100%"
               width="100%"
-              effect="blur"
             />
             <p className="imagePreviewLabel">{post.title}</p>
           </Link>
