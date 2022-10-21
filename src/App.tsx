@@ -10,7 +10,10 @@ import Home from "./pages/Home";
 
 import { useHome, usePortfolios } from "./services";
 import useMobile from "./hooks/useMobile";
+
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const { data: homeData, isLoading: isLoadingHome } = useHome();

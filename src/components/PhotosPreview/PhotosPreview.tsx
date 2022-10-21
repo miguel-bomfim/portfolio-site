@@ -24,7 +24,7 @@ interface Posts {
 
 const PhotosPreview: FC<Posts> = ({ posts }) => {
   return (
-    <ImageList sx={{ maxWidth: 900 }} variant="masonry" cols={2} gap={8}>
+    <ImageList sx={{ maxWidth: 1080 }} variant="masonry" cols={2} gap={8}>
       {posts?.map((post) => (
         <ImageListItem className="imagePreviewContainer">
           <Link

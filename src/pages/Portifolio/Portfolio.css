@@ -5,3 +5,20 @@
   margin-bottom: 50px;
   padding: 16px;
 }
+
+.image {
+  cursor: nw-resize;
+}
+
+.imageSlider {
+  cursor: grab;
+}
+
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
+.slick-slide {
+  padding: 150px;
+}
