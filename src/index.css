@@ -13,6 +13,14 @@ body {
   overflow-y: overlay;
 }
 
+#root {
+  min-height: 100vh;
+  margin: 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -23,6 +31,13 @@ a:link,
 a:visited {
   text-decoration: inherit;
   color: inherit;
+}
+
+footer {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 ::-webkit-scrollbar {

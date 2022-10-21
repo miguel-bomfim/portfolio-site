@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Footer from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
+      <Footer />
     </QueryClientProvider>
   </React.StrictMode>
 );
