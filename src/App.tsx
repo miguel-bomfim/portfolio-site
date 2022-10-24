@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import PortfolioPage from "./pages/Portifolio/PortfolioPage";
 import PortfolioPhotos from "./pages/Portifolio/PortfolioPhotos";
-import About from "./pages/About";
+import About from "./pages/AboutPage";
 import InteractiveCursor from "./components/InteractiveCursor";
 import Home from "./pages/Home";
 
-import { useHome, usePortfolios } from "./services";
+import { useHome, usePortfolio, useAboutMe } from "./services";
 import useMobile from "./hooks/useMobile";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -17,7 +17,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const { data: homeData, isLoading: isLoadingHome } = useHome();
-  const { data: posts } = usePortfolios();
+  const { data: posts } = usePortfolio();
+  const { data: aboutMe } = useAboutMe();
+
   const isMobile = useMobile();
 
   return (
@@ -32,7 +34,12 @@ function App() {
         />
         <Route path="/portfolio" element={<PortfolioPage posts={posts} />} />
         <Route path="portfolio/:slug" element={<PortfolioPhotos />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/about"
+          element={
+            <About image={aboutMe?.photo} description={aboutMe?.summary} />
+          }
+        />
       </Routes>
       {/* {!isMobile && <InteractiveCursor />} */}
     </BrowserRouter>

@@ -10,6 +10,15 @@ type HomeProps = {
   name: string;
 };
 
+type AboutProps = {
+  photo: {
+    url: string;
+    width: string;
+    height: string;
+  };
+  summary: string;
+};
+
 export const useHome = () => {
   return useQuery<HomeProps>("get-home", async () => {
     const { home } = await request(
@@ -29,8 +38,8 @@ export const useHome = () => {
   });
 };
 
-export const usePortfolios = () => {
-  return useQuery("get-posts", async () => {
+export const usePortfolio = () => {
+  return useQuery("get-portfolio", async () => {
     const { photographs } = await request(
       graphqlAPI,
       gql`
@@ -54,5 +63,26 @@ export const usePortfolios = () => {
       `
     );
     return photographs;
+  });
+};
+
+export const useAboutMe = () => {
+  return useQuery<AboutProps>("get-about-me", async () => {
+    const { aboutMe } = await request(
+      graphqlAPI,
+      gql`
+        query GetAboutMeInfo {
+          aboutMe(where: { id: "cl70x5kqr1k0a0cki6nebuzoy" }) {
+            photo {
+              url
+              width
+              height
+            }
+            summary
+          }
+        }
+      `
+    );
+    return aboutMe;
   });
 };
