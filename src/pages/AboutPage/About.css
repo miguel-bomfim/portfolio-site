@@ -1,0 +1,18 @@
+.aboutContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  position: relative;
+  margin-top: 70px;
+}
+
+.aboutHeader {
+  position: absolute;
+  grid-column: 4;
+  margin-top: 10px;
+  font-size: 70px;
+  z-index: 1;
+}
+
+.aboutImage {
+  grid-column: 5/13;
+}

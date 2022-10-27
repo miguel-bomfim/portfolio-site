@@ -31,7 +31,7 @@ const Header: React.FC = () => {
           })}
           to="/portfolio"
         >
-          Portfolio
+          Portfólio
         </Link>
         <Link
           className={classNames("navBarItem", {
@@ -40,14 +40,6 @@ const Header: React.FC = () => {
           to="/about"
         >
           Sobre mim
-        </Link>
-        <Link
-          className={classNames("navBarItem", {
-            navBarItemSelected: pathname === "/contact",
-          })}
-          to="/contact"
-        >
-          Contato
         </Link>
       </ul>
     </div>
