@@ -1,29 +1,27 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import InteractiveCursor from "./components/InteractiveCursor";
 import Menu from "./components/Menu";
 import PortfolioPage from "./pages/Portifolio/PortfolioPage";
 import PortfolioPhotos from "./pages/Portifolio/PortfolioPhotos";
 import About from "./pages/AboutPage";
-import InteractiveCursor from "./components/InteractiveCursor";
 import Home from "./pages/Home";
 
 import { useHome, usePortfolio, useAboutMe } from "./services";
-import useMobile from "./hooks/useMobile";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import ScrollToTop from "./helpers/ScrollToTop";
+
 function App() {
-  const { data: homeData, isLoading: isLoadingHome } = useHome();
+  const { data: homeData } = useHome();
   const { data: posts } = usePortfolio();
   const { data: aboutMe } = useAboutMe();
 
-  const isMobile = useMobile();
-
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Menu />
       <Routes>
         <Route
@@ -41,7 +39,6 @@ function App() {
           }
         />
       </Routes>
-      {/* {!isMobile && <InteractiveCursor />} */}
     </BrowserRouter>
   );
 }
