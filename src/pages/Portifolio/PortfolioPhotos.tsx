@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import useMobile from "../../hooks/useMobile";
-import Dialog from "@mui/material/Dialog";
 import "./Portfolio.css";
+import DialogSlider from "../../components/DialogSlider";
 
-import Slider from "react-slick";
 interface LocationProps {
   state: [
     {
@@ -19,20 +18,13 @@ interface LocationProps {
   ];
 }
 
-const PortfolioPhotos: React.FC = () => {
+const PortfolioPhotos = () => {
+  const [showSlider, setShowSlider] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(3);
+
   const { state } = useLocation() as LocationProps;
-  const settings = {
-    dots: false,
-    centerMode: true,
-    infinite: false,
-    speed: 300,
-    slidesToShow: 1,
-    variableWidth: true,
-    arrows: false,
-  };
 
   const isMobile = useMobile();
-  const [showSlider, setShowSlider] = useState(false);
 
   return (
     <main>
@@ -45,7 +37,7 @@ const PortfolioPhotos: React.FC = () => {
         }}
       >
         <ImageList cols={1}>
-          {state.map((item) => {
+          {state.map((item, idx) => {
             if (item.height > item.width) {
               item.height = 1117;
               item.width = 740;
@@ -55,15 +47,18 @@ const PortfolioPhotos: React.FC = () => {
             }
 
             return (
-              <ImageListItem sx={{ overflowY: "hidden" }} key={item.id}>
+              <ImageListItem sx={{ overflowY: "hidden" }} key={idx}>
                 <div
                   className="image"
                   onClick={() => {
-                    setShowSlider(true);
+                    setCurrentSlide(idx);
+                    !isMobile && setShowSlider(!showSlider);
                   }}
+                  key={idx}
                 >
                   <LazyLoadImage
                     src={item.url}
+                    key={idx}
                     alt=""
                     height={isMobile ? "100%" : item.height}
                     width={isMobile ? "100%" : item.width}
@@ -77,29 +72,12 @@ const PortfolioPhotos: React.FC = () => {
         </ImageList>
       </div>
       {showSlider && (
-        <Dialog
-          PaperProps={{
-            sx: { bgcolor: "transparent", height: "auto", boxShadow: "none" },
-          }}
-          sx={{ display: "block" }}
-          fullScreen={true}
-          open={showSlider}
-          onClose={() => setShowSlider(false)}
-        >
-          <Slider {...settings}>
-            {state.map((item) => (
-              <LazyLoadImage
-                className="imageSlider"
-                src={item.url}
-                alt=""
-                height="100%"
-                width="100%"
-                effect="blur"
-                placeholderSrc={item.url}
-              />
-            ))}
-          </Slider>
-        </Dialog>
+        <DialogSlider
+          openSlider={showSlider}
+          setOpenSlider={setShowSlider}
+          currentSlide={currentSlide}
+          images={state}
+        />
       )}
     </main>
   );
