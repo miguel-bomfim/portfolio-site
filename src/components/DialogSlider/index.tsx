@@ -1,5 +1,7 @@
 import React, { FC, useRef } from "react";
 import Dialog from "@mui/material/Dialog";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import Slider from "react-slick";
 import "./DialogSlider.css";
 import classNames from "classnames";
@@ -49,6 +51,9 @@ const DialogSlider: FC<DialogSliderProps> = ({
       open={openSlider}
       onClose={() => setOpenSlider(false)}
     >
+      <IconButton className="closeButton" component="label">
+        <CloseIcon color="primary" fontSize="large" />
+      </IconButton>
       <Slider {...settings} ref={sliderRef}>
         {images.map((item, idx) => {
           return (

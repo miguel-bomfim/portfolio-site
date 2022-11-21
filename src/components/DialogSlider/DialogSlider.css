@@ -1,3 +1,8 @@
+.closeButton {
+  position: absolute !important;
+  right: 40px !important;
+}
+
 .lazyImageSlider {
   cursor: grab;
 }

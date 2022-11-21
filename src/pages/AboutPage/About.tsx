@@ -30,11 +30,11 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
   return (
     <article className="aboutContainer">
       <div className="aboutHeader">
-        <h1 className="aboutHeaderTitle">
+        <h2 className="aboutHeaderTitle">
           Sarah
           <br />
           Freitas
-        </h1>
+        </h2>
         <LazyLoadImage
           wrapperClassName={classNames({
             aboutImageWrapper: !isMobile,
