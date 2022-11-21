@@ -21,6 +21,10 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+a {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 ul {
   list-style: none;
   padding: 0;

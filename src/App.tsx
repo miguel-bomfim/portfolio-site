@@ -19,6 +19,8 @@ function App() {
   const { data: posts } = usePortfolio();
   const { data: aboutMe } = useAboutMe();
 
+  console.log("about", aboutMe);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -35,7 +37,11 @@ function App() {
         <Route
           path="/about"
           element={
-            <About image={aboutMe?.photo} description={aboutMe?.summary} />
+            <About
+              image={aboutMe?.photo}
+              description={aboutMe?.summary}
+              portfolioExamples={aboutMe?.portfolioExamples}
+            />
           }
         />
       </Routes>

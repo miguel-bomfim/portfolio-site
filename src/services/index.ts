@@ -17,6 +17,12 @@ type AboutProps = {
     height: string;
   };
   summary: string;
+  portfolioExamples: [
+    {
+      url: string;
+      id: string;
+    }
+  ];
 };
 
 export const useHome = () => {
@@ -79,6 +85,10 @@ export const useAboutMe = () => {
               height
             }
             summary
+            portfolioExamples {
+              url
+              id
+            }
           }
         }
       `

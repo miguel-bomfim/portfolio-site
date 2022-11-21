@@ -1,18 +1,95 @@
 .aboutContainer {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(1fr);
+  justify-items: center;
   position: relative;
   margin-top: 70px;
+  font-family: Plus Jakarta Sans, "sans-serif";
 }
 
 .aboutHeader {
-  position: absolute;
-  grid-column: 4;
-  margin-top: 10px;
-  font-size: 70px;
-  z-index: 1;
+  display: flex;
 }
 
-.aboutImage {
-  grid-column: 5/13;
+.aboutHeaderTitle {
+  margin: 0;
+  font-size: 100px;
+  text-align: right;
+}
+
+.aboutImageWrapper {
+  /* grid-column: 6/13; */
+}
+
+.aboutImageWrapperMobile {
+  /* grid-column: 1/13; */
+}
+
+.aboutImageMobile {
+  width: 100%;
+}
+
+.description {
+  /* grid-column: 2/12; */
+  margin-top: 200px;
+  font-size: 34px;
+}
+
+.endPresentationContainer {
+  margin-top: 250px;
+  margin-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.endPresentation {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  font-weight: bold;
+}
+
+.endPresentation img:nth-child(2) {
+  position: relative;
+  top: 75px;
+}
+
+.endPresentation img:nth-child(3) {
+  position: relative;
+  top: -75px;
+}
+
+.endPresentationTitle1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 75px;
+  margin: 0;
+  margin-left: 36px;
+}
+
+.endPresentationTitle2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 75px;
+  margin: 0;
+  align-self: flex-end;
+  margin-right: 36px;
+}
+
+.contactSection {
+  margin-bottom: 200px;
+}
+
+.contactTitle {
+  font-size: 30px;
+}
+
+@media (max-width: 600px) {
+  .aboutHeaderTitle {
+    position: absolute;
+    font-size: 50px;
+    z-index: 1;
+    color: white;
+  }
 }

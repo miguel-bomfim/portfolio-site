@@ -13,7 +13,6 @@ const Header: React.FC = () => {
           color: "black",
           fontSize: "18px",
           fontWeight: "800",
-          fontFamily: "Plus Jakarta Sans, sans-serif",
         }}
         aria-label="breadcrumb"
       >
