@@ -19,8 +19,6 @@ function App() {
   const { data: posts } = usePortfolio();
   const { data: aboutMe } = useAboutMe();
 
-  console.log("about", aboutMe);
-
   return (
     <BrowserRouter>
       <ScrollToTop />
