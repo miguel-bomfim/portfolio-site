@@ -20,7 +20,7 @@ interface LocationProps {
 
 const PortfolioPhotos = () => {
   const [showSlider, setShowSlider] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(3);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const { state } = useLocation() as LocationProps;
 

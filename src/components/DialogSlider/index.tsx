@@ -35,7 +35,8 @@ const DialogSlider: FC<DialogSliderProps> = ({
     variableWidth: true,
     arrows: true,
     focusOnSelect: true,
-    onInit: () => sliderRef.current?.slickGoTo(currentSlide, true),
+    initialSlide: currentSlide,
+    onInit: () => sliderRef.current?.slickGoTo(currentSlide),
   };
 
   return (
