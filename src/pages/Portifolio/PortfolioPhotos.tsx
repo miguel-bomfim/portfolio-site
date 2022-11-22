@@ -27,15 +27,8 @@ const PortfolioPhotos = () => {
   const isMobile = useMobile();
 
   return (
-    <main>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "60px",
-          marginBottom: "50px",
-        }}
-      >
+    <div>
+      <div className="containerPhotos">
         <ImageList cols={1}>
           {state.map((item, idx) => {
             if (item.height > item.width) {
@@ -79,7 +72,7 @@ const PortfolioPhotos = () => {
           images={state}
         />
       )}
-    </main>
+    </div>
   );
 };
 

@@ -8,14 +8,7 @@ const Header: React.FC = () => {
 
   return (
     <div className="navBar">
-      <ul
-        style={{
-          color: "black",
-          fontSize: "18px",
-          fontWeight: "800",
-        }}
-        aria-label="breadcrumb"
-      >
+      <ul className="navBarItems" aria-label="breadcrumb">
         <Link
           className={classNames("navBarItem", {
             navBarItemSelected: pathname === "/",

@@ -36,26 +36,34 @@ function App() {
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <Menu />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home name={homeData?.name} homeImage={homeData?.homeImage.url} />
-            }
-          />
-          <Route path="/portfolio" element={<PortfolioPage posts={posts} />} />
-          <Route path="portfolio/:slug" element={<PortfolioPhotos />} />
-          <Route
-            path="/about"
-            element={
-              <About
-                image={aboutMe?.photo}
-                description={aboutMe?.summary}
-                portfolioExamples={aboutMe?.portfolioExamples}
-              />
-            }
-          />
-        </Routes>
+        <main style={{ marginTop: "3.3125em" }}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  name={homeData?.name}
+                  homeImage={homeData?.homeImage.url}
+                />
+              }
+            />
+            <Route
+              path="/portfolio"
+              element={<PortfolioPage posts={posts} />}
+            />
+            <Route path="portfolio/:slug" element={<PortfolioPhotos />} />
+            <Route
+              path="/about"
+              element={
+                <About
+                  image={aboutMe?.photo}
+                  description={aboutMe?.summary}
+                  portfolioExamples={aboutMe?.portfolioExamples}
+                />
+              }
+            />
+          </Routes>
+        </main>
       </ThemeProvider>
     </BrowserRouter>
   );

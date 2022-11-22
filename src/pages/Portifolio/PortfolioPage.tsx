@@ -21,10 +21,10 @@ interface Posts {
 
 const Portfolio: FC<Posts> = ({ posts }) => {
   return (
-    <main className="portfolioList">
+    <div className="portfolioList">
       <PhotosPreview posts={posts} />
       <Outlet />
-    </main>
+    </div>
   );
 };
 

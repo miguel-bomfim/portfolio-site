@@ -3,11 +3,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 1em;
   position: fixed;
-  z-index: 10;
-  top: 0;
+  z-index: 1;
   background-color: white;
+}
+
+.navBarItems {
+  color: black;
+  font-weight: 800;
 }
 
 .navBarItem {

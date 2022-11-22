@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import "./Home.css";
 
 interface HomeProps {
   name: string | undefined;
@@ -7,20 +8,8 @@ interface HomeProps {
 
 const Home: FC<HomeProps> = ({ name, homeImage }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        position: "relative",
-        marginTop: "60px",
-        height: "850px",
-      }}
-    >
-      <img
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        src={homeImage}
-        alt=""
-      />
+    <div className="homeContainer">
+      <img className="homeImg" src={homeImage} alt="" />
     </div>
   );
 };
