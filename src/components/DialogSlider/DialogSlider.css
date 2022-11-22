@@ -1,6 +1,8 @@
 .closeButton {
   position: absolute !important;
-  right: 40px !important;
+  right: 75px !important;
+  top: 1% !important;
+  z-index: 99999999;
 }
 
 .lazyImageSlider {
@@ -32,7 +34,7 @@
 
 @media (min-width: 600px) {
   .horizontalImage:first-child {
-    width: 70vw !important;
+    width: 65vw !important;
   }
 
   .verticalImage:first-child {

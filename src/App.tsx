@@ -23,10 +23,10 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        light: "#fff",
-        main: "#fff",
-        dark: "#fff",
-        contrastText: "#fff",
+        light: "black",
+        main: "black",
+        dark: "black",
+        contrastText: "black",
       },
     },
   });
