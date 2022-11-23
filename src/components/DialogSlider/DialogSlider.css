@@ -1,8 +1,11 @@
 .closeButton {
   position: absolute !important;
-  right: 75px !important;
-  top: 1% !important;
-  z-index: 99999999;
+  right: 5% !important;
+  top: 3% !important;
+  z-index: 999;
+  background-color: white !important;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 10px 12px;
 }
 
 .lazyImageSlider {

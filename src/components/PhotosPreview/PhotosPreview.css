@@ -21,6 +21,6 @@
 
 @media (max-width: 600px) {
   .imagePreviewLabel {
-    font-size: 18px;
+    font-size: 1em;
   }
 }

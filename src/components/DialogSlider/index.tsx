@@ -43,44 +43,48 @@ const DialogSlider: FC<DialogSliderProps> = ({
   };
 
   return (
-    <>
+    <Dialog
+      PaperProps={{
+        sx: {
+          bgcolor: "transparent",
+          height: "auto",
+          boxShadow: "none",
+          position: "inherit",
+        },
+      }}
+      sx={{ display: "block" }}
+      fullScreen={true}
+      open={openSlider}
+      onClose={() => setOpenSlider(false)}
+    >
       <IconButton
-        onClick={() => setOpenSlider(!openSlider)}
         className="closeButton"
+        onClick={() => setOpenSlider(!openSlider)}
         component="label"
       >
-        <CloseIcon color="primary" fontSize="large" />
+        <CloseIcon color="primary" fontSize="small" />
       </IconButton>
-      <Dialog
-        PaperProps={{
-          sx: { bgcolor: "transparent", height: "auto", boxShadow: "none" },
-        }}
-        sx={{ display: "block" }}
-        fullScreen={true}
-        open={openSlider}
-        onClose={() => setOpenSlider(false)}
-      >
-        <Slider {...settings} ref={sliderRef}>
-          {images.map((item, idx) => {
-            return (
-              <LazyLoadImage
-                className={classNames("lazyImageSlider", {
-                  horizontalImage: item.height < item.width,
-                  verticalImage: item.height > item.width,
-                })}
-                key={idx}
-                src={item.url}
-                alt=""
-                height="100%"
-                width="100%"
-                effect="blur"
-                placeholderSrc={item.url}
-              />
-            );
-          })}
-        </Slider>
-      </Dialog>
-    </>
+
+      <Slider {...settings} ref={sliderRef}>
+        {images.map((item, idx) => {
+          return (
+            <LazyLoadImage
+              className={classNames("lazyImageSlider", {
+                horizontalImage: item.height < item.width,
+                verticalImage: item.height > item.width,
+              })}
+              key={idx}
+              src={item.url}
+              alt=""
+              height="100%"
+              width="100%"
+              effect="blur"
+              placeholderSrc={item.url}
+            />
+          );
+        })}
+      </Slider>
+    </Dialog>
   );
 };
 

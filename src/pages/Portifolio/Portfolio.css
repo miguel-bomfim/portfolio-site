@@ -12,3 +12,9 @@
 .image {
   cursor: nw-resize;
 }
+
+@media (max-width: 600px) {
+  .portfolioList {
+    padding: 0 0.5em;
+  }
+}
