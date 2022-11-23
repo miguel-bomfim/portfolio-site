@@ -1,6 +1,11 @@
-import React, { FC, useRef } from "react";
+import {
+  FC,
+  createRef,
+  Dispatch,
+  SetStateAction,
+  MutableRefObject,
+} from "react";
 import Dialog from "@mui/material/Dialog";
-
 import Slider from "react-slick";
 import "./DialogSlider.css";
 import classNames from "classnames";
@@ -10,7 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 interface DialogSliderProps {
   openSlider: boolean;
-  setOpenSlider: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenSlider: Dispatch<SetStateAction<boolean>>;
   currentSlide: number;
   images: [
     {
@@ -28,7 +33,7 @@ const DialogSlider: FC<DialogSliderProps> = ({
   currentSlide,
   images,
 }) => {
-  const sliderRef = useRef<Slider | null>(null);
+  const sliderRef = createRef() as unknown as MutableRefObject<Slider>;
   const settings = {
     dots: false,
     centerMode: true,
@@ -38,8 +43,10 @@ const DialogSlider: FC<DialogSliderProps> = ({
     variableWidth: true,
     arrows: true,
     focusOnSelect: true,
-    initialSlide: currentSlide,
-    onInit: () => sliderRef.current?.slickGoTo(currentSlide),
+    onInit: () =>
+      setTimeout(() => {
+        sliderRef.current?.slickGoTo(currentSlide, true);
+      }, 100),
   };
 
   return (
