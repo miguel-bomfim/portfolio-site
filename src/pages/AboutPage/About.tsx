@@ -33,7 +33,7 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
         <h2 className="aboutHeaderTitle">
           Sarah
           <br />
-          Freitas
+          Heloísa
         </h2>
         <LazyLoadImage
           wrapperClassName={classNames({

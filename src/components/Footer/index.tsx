@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   return (
     <footer>
       <small style={{ fontSize: "15px", textAlign: "center" }}>
-        &copy; {currentYear} Sarah Heloisa. Todos os direitos reservados.
+        &copy; {currentYear} Sarah Heloísa. Todos os direitos reservados.
       </small>{" "}
     </footer>
   );
