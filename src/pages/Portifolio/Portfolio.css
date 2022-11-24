@@ -1,7 +1,6 @@
 .portfolioList {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
 }
 
 .containerPhotos {
@@ -15,6 +14,6 @@
 
 @media (max-width: 600px) {
   .portfolioList {
-    padding: 0 0.5em;
+    padding: 0 0.25em;
   }
 }

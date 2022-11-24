@@ -29,7 +29,14 @@ const PortfolioPhotos = () => {
   return (
     <div>
       <div className="containerPhotos">
-        <ImageList cols={1}>
+        <ImageList
+          sx={{
+            "@media screen and (min-width: 600px)": {
+              gap: "0 !important",
+            },
+          }}
+          cols={1}
+        >
           {state.map((item, idx) => {
             if (item.height > item.width) {
               item.height = 1117;

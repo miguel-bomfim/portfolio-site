@@ -36,7 +36,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <Menu />
-        <main style={{ marginTop: "3.3125em" }}>
+        <main style={{ margin: "3.3125em 0" }}>
           <Routes>
             <Route
               path="/"
