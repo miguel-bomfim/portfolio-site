@@ -30,13 +30,15 @@ const PhotosPreview: FC<Posts> = ({ posts }) => {
             to={`/portfolio/${post?.slug}`}
             state={post.photos}
           >
-            <img
-              className="imagePreview"
-              src={`${post.thumbnail.url}?w=248&fit=crop&auto=format`}
-              alt={post.title}
-              width="100%"
-            />
-            <p className="imagePreviewLabel">{post.title}</p>
+            <div>
+              <img
+                className="imagePreview"
+                src={`${post.thumbnail.url}?w=248&fit=crop&auto=format`}
+                alt={post.title}
+                width="100%"
+              />
+              <p className="imagePreviewLabel">{post.title}</p>
+            </div>
           </Link>
         </ImageListItem>
       ))}

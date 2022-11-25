@@ -21,6 +21,10 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+img {
+  pointer-events: none;
+}
+
 a {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
