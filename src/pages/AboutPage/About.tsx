@@ -40,9 +40,7 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
             aboutImageWrapper: !isMobile,
             aboutImageWrapperMobile: isMobile,
           })}
-          className={classNames({
-            aboutImageMobile: isMobile,
-          })}
+          className="aboutImage"
           alt="foto da saris"
           src={image?.url}
           effect="blur"

@@ -20,7 +20,7 @@ interface Posts {
 
 const PhotosPreview: FC<Posts> = ({ posts }) => {
   return (
-    <ImageList sx={{ maxWidth: 1080 }} variant="masonry" cols={2}>
+    <ImageList variant="masonry" cols={2}>
       {posts?.map((post, idx) => (
         <ImageListItem key={idx} className="imagePreviewContainer">
           <Link key={post.slug} to={`/portfolio/${post?.slug}`}>

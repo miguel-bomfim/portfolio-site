@@ -17,3 +17,9 @@
     padding: 0 0.25em;
   }
 }
+
+@media (min-width: 600px) {
+  .portfolioList {
+    margin: 0 20%;
+  }
+}
