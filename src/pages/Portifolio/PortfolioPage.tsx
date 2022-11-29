@@ -5,14 +5,12 @@ import "./Portfolio.css";
 
 interface CardPreviewProps {
   title: string;
-  photos: [{ id: string; url: string; height: number; width: number }];
   thumbnail: {
     url: string;
     height: number;
     width: number;
   };
   slug: string;
-  createdAt: Date;
 }
 
 interface Posts {

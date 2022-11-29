@@ -11,9 +11,7 @@ interface CardPreviewProps {
     height: number;
     width: number;
   };
-  photos: [{ id: string; url: string; height: number; width: number }];
   slug: string;
-  createdAt: Date;
 }
 
 interface Posts {
@@ -25,11 +23,7 @@ const PhotosPreview: FC<Posts> = ({ posts }) => {
     <ImageList sx={{ maxWidth: 1080 }} variant="masonry" cols={2}>
       {posts?.map((post, idx) => (
         <ImageListItem key={idx} className="imagePreviewContainer">
-          <Link
-            key={post.slug}
-            to={`/portfolio/${post?.slug}`}
-            state={post.photos}
-          >
+          <Link key={post.slug} to={`/portfolio/${post?.slug}`}>
             <div>
               <img
                 className="imagePreview"

@@ -6,77 +6,77 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import useMobile from "../../hooks/useMobile";
 import "./Portfolio.css";
 import DialogSlider from "../../components/DialogSlider";
+import { useEssay } from "../../services";
 
-interface LocationProps {
-  state: [
-    {
-      id: string;
-      url: string;
-      height: number;
-      width: number;
-    }
-  ];
+interface EssayProps {
+  url: string;
+  id: string;
+  width: number;
+  height: number;
 }
 
 const PortfolioPhotos = () => {
+  const { pathname } = useLocation();
+  const slug = pathname.substring(11);
+  const { data: essay, isLoading } = useEssay(slug);
   const [showSlider, setShowSlider] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const { state } = useLocation() as LocationProps;
 
   const isMobile = useMobile();
 
   return (
     <div>
-      <div className="containerPhotos">
-        <ImageList
-          sx={{
-            "@media screen and (min-width: 600px)": {
-              gap: "0 !important",
-            },
-          }}
-          cols={1}
-        >
-          {state.map((item, idx) => {
-            if (item.height > item.width) {
-              item.height = 1117;
-              item.width = 740;
-            } else {
-              item.height = 493;
-              item.width = 740;
-            }
+      {!isLoading && (
+        <div className="containerPhotos">
+          <ImageList
+            sx={{
+              "@media screen and (min-width: 600px)": {
+                gap: "0 !important",
+              },
+            }}
+            cols={1}
+          >
+            {essay.map((item: EssayProps, idx: number) => {
+              if (item.height > item.width) {
+                item.height = 1117;
+                item.width = 740;
+              } else {
+                item.height = 493;
+                item.width = 740;
+              }
 
-            return (
-              <ImageListItem sx={{ overflowY: "hidden" }} key={idx}>
-                <div
-                  className="image"
-                  onClick={() => {
-                    setCurrentSlide(idx);
-                    !isMobile && setShowSlider(!showSlider);
-                  }}
-                  key={idx}
-                >
-                  <LazyLoadImage
-                    src={item.url}
+              return (
+                <ImageListItem sx={{ overflowY: "hidden" }} key={idx}>
+                  <div
+                    className="image"
+                    onClick={() => {
+                      setCurrentSlide(idx);
+                      !isMobile && setShowSlider(!showSlider);
+                    }}
                     key={idx}
-                    alt=""
-                    height={isMobile ? "100%" : item.height}
-                    width={isMobile ? "100%" : item.width}
-                    effect="blur"
-                    placeholderSrc={item.url}
-                  />
-                </div>
-              </ImageListItem>
-            );
-          })}
-        </ImageList>
-      </div>
+                  >
+                    <LazyLoadImage
+                      src={item.url}
+                      key={idx}
+                      alt=""
+                      height={isMobile ? "100%" : item.height}
+                      width={isMobile ? "100%" : item.width}
+                      effect="blur"
+                      placeholderSrc={item.url}
+                    />
+                  </div>
+                </ImageListItem>
+              );
+            })}
+          </ImageList>
+        </div>
+      )}
       {showSlider && (
         <DialogSlider
           openSlider={showSlider}
           setOpenSlider={setShowSlider}
           currentSlide={currentSlide}
-          images={state}
+          images={essay}
         />
       )}
     </div>

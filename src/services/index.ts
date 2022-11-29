@@ -49,19 +49,13 @@ export const usePortfolio = () => {
     const { photographs } = await request(
       graphqlAPI,
       gql`
-        query GetPosts {
+        query GetPortfolio {
           photographs {
             title
             thumbnail {
               url
               height
               width
-            }
-            photos(first: 40) {
-              id
-              url
-              width
-              height
             }
             slug
           }
@@ -70,6 +64,34 @@ export const usePortfolio = () => {
     );
     return photographs;
   });
+};
+
+export const useEssay = (slug: string) => {
+  return useQuery(
+    "get-essay",
+    async () => {
+      const { photograph: essay } = await request(
+        graphqlAPI,
+        gql`
+          query GetEssay($slug: String!) {
+            photograph(where: { slug: $slug }) {
+              photos {
+                url
+                id
+                height
+                width
+              }
+            }
+          }
+        `,
+        {
+          slug: slug,
+        }
+      );
+      return essay.photos;
+    },
+    { enabled: !!slug }
+  );
 };
 
 export const useAboutMe = () => {
