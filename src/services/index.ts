@@ -3,39 +3,24 @@ import { useQuery } from "react-query";
 
 const graphqlAPI = process.env.REACT_APP_PUBLIC_GRAPHCMS_ENDPOINT ?? "";
 
-type HomeProps = {
-  homeImage: {
-    url: string;
-  };
-  name: string;
-};
-
-type AboutProps = {
-  photo: {
-    url: string;
-    width: string;
-    height: string;
-  };
-  summary: string;
-  portfolioExamples: [
-    {
-      url: string;
-      id: string;
-    }
-  ];
-};
-
 export const useHome = () => {
-  return useQuery<HomeProps>("get-home", async () => {
+  return useQuery("get-home", async () => {
     const { home } = await request(
       graphqlAPI,
       gql`
         query Home {
           home(where: { id: "cl83ae8um24js0dlwj9u1aoy8" }) {
-            name
+            introduction {
+              html
+            }
             homeImage {
               url
             }
+            developmentText
+            images {
+              url
+            }
+            conclusion
           }
         }
       `
@@ -95,18 +80,21 @@ export const useEssay = (slug: string) => {
 };
 
 export const useAboutMe = () => {
-  return useQuery<AboutProps>("get-about-me", async () => {
+  return useQuery("get-about-me", async () => {
     const { aboutMe } = await request(
       graphqlAPI,
       gql`
         query GetAboutMeInfo {
           aboutMe(where: { id: "cl70x5kqr1k0a0cki6nebuzoy" }) {
+            name
             photo {
               url
               width
               height
             }
-            summary
+            summary {
+              html
+            }
             portfolioExamples {
               url
               id
