@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import ScrollToTop from "./helpers/ScrollToTop";
+import Footer from "./components/Footer";
 
 function App() {
   const { data: homeData } = useHome();
@@ -64,6 +65,7 @@ function App() {
             />
           </Routes>
         </main>
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   );

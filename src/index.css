@@ -25,7 +25,9 @@ img {
   pointer-events: none;
 }
 
-a {
+a,
+p,
+small {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 

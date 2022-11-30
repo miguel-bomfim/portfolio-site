@@ -31,7 +31,8 @@
 
 .description {
   margin-top: 200px;
-  font-size: 34px;
+  font-size: 2em;
+  text-align: justify;
 }
 
 .endPresentationContainer {
