@@ -12,6 +12,7 @@
 .navBarItems {
   color: black;
   font-weight: 800;
+  font-size: 1.25em;
 }
 
 .navBarItem {
@@ -36,6 +37,13 @@
 
 .navBarItemSelected::before {
   background: black;
+}
+
+.socialSections {
+  z-index: 11;
+  position: fixed;
+  padding: 0.5em;
+  right: 75px;
 }
 
 @media (max-width: 600px) {

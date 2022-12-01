@@ -27,7 +27,8 @@ img {
 
 a,
 p,
-small {
+small,
+h1 {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 

@@ -29,10 +29,9 @@
   width: 100%;
 }
 
-.description {
-  margin-top: 200px;
-  font-size: 2em;
-  text-align: justify;
+.description p:first-of-type {
+  font-size: 30px;
+  color: black;
 }
 
 .endPresentationContainer {
@@ -72,14 +71,6 @@
   font-size: 75px;
   margin: 0;
   align-self: flex-end;
-}
-
-.contactSection {
-  margin-bottom: 200px;
-}
-
-.contactTitle {
-  font-size: 30px;
 }
 
 @media (max-width: 600px) {

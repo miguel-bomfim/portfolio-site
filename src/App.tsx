@@ -37,14 +37,17 @@ function App() {
       <ThemeProvider theme={theme}>
         <ScrollToTop />
         <Menu />
-        <main style={{ margin: "3.3125em 0" }}>
+        <main style={{ margin: "3.65625em 0" }}>
           <Routes>
             <Route
               path="/"
               element={
                 <Home
-                  name={homeData?.name}
+                  introduction={homeData?.introduction.html}
+                  developmentText={homeData?.developmentText}
                   homeImage={homeData?.homeImage.url}
+                  images={homeData?.images}
+                  conclusion={homeData?.conclusion}
                 />
               }
             />
@@ -58,7 +61,7 @@ function App() {
               element={
                 <About
                   image={aboutMe?.photo}
-                  description={aboutMe?.summary}
+                  description={aboutMe?.summary.html}
                   portfolioExamples={aboutMe?.portfolioExamples}
                 />
               }

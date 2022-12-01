@@ -13,7 +13,7 @@ interface AboutProps {
         height: string;
       }
     | undefined;
-  description: string | undefined;
+  description: string;
   portfolioExamples:
     | [
         {
@@ -46,7 +46,10 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
           effect="blur"
         />
       </div>
-      <p className="description">{description}</p>
+      <div
+        className="description"
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
       <div className="endPresentationContainer">
         <h2 className="endPresentationTitle1">Vamos</h2>
         <div className="endPresentation">
@@ -62,31 +65,6 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
           })}
         </div>
         <h2 className="endPresentationTitle2 "> criar</h2>
-      </div>
-
-      <div className="contactSection">
-        <h3 className="contactTitle">Me chama!</h3>
-        <div role="presentation">
-          <Breadcrumbs sx={{ fontSize: "50px" }} aria-label="breadcrumb">
-            <Link
-              className="linkSizes"
-              underline="hover"
-              color="inherit"
-              target="_blank"
-              href="https://www.instagram.com/sarahheloisa/"
-            >
-              Instagram
-            </Link>
-            <Link
-              className="linkSizes"
-              underline="hover"
-              color="inherit"
-              href="mailto:sarahheloisa2010@hotmail.com"
-            >
-              Email
-            </Link>
-          </Breadcrumbs>
-        </div>
       </div>
     </article>
   );
