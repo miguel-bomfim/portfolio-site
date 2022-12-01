@@ -3,7 +3,6 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 interface HomeProps {
   introduction: string | undefined;
   homeImage: string | undefined;
@@ -15,6 +14,8 @@ interface HomeProps {
 interface ImagesProps {
   url: string;
   id: string;
+  height: number;
+  width: number;
 }
 
 const Home: FC<HomeProps> = ({
@@ -38,18 +39,19 @@ const Home: FC<HomeProps> = ({
     <>
       {images && (
         <div>
-          <img className="homeImg" src={homeImage} alt="" />
-          <div className="homeContainer">
-            {/* <h1 className="homeTitle">{homeTitle}</h1> */}
+          <div style={{ marginBottom: "-5em" }}>
+            <img className="homeImg" src={homeImage} alt="" />
             <div className="homeFirstParagraph">
               {paragraphs.map((pTag, idx) => {
                 return (
-                  <p style={{ margin: 0, textShadow: "5px 5px 50px black" }}>
+                  <p style={{ margin: 0, textShadow: "5px 5px 35px black" }}>
                     {pTag.innerHTML}
                   </p>
                 );
               })}
             </div>
+          </div>
+          <div className="homeContainer">
             <div className="secondParagrahContainer">
               <p className="homeSecondParagraph">{developmentText}</p>
               <img className="secondParagraphImg" src={firstImage} alt="" />
@@ -60,21 +62,20 @@ const Home: FC<HomeProps> = ({
               ))}
             </div>
             <img className="lastImg" src={lastImage?.url} alt="" />
-            <div
+
+            <Link
+              to="/portfolio"
               style={{
                 marginTop: "50px",
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              <p style={{ fontSize: "30px", marginRight: "16PX" }}>
+              <p style={{ fontSize: "30px", marginRight: "16px" }}>
                 {conclusion}
               </p>
-              <Link to="/portfolio">
-                <ArrowCircleRightIcon fontSize="large" />
-                {/* <KeyboardDoubleArrowRightIcon fontSize="large" /> */}
-              </Link>
-            </div>
+              <ArrowCircleRightIcon fontSize="large" />
+            </Link>
           </div>
         </div>
       )}

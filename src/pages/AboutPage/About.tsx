@@ -27,6 +27,11 @@ interface AboutProps {
 const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
   const isMobile = useMobile();
 
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(description || "", "text/html");
+  const aboutParagraph = doc.getElementsByTagName("p");
+  var paragraphs = Array.from(aboutParagraph);
+
   return (
     <article className="aboutContainer">
       <div className="aboutHeader">
@@ -46,10 +51,13 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
           effect="blur"
         />
       </div>
-      <div
-        className="description"
-        dangerouslySetInnerHTML={{ __html: description }}
-      />
+      {paragraphs.map((pTag, idx) => {
+        return (
+          <div className={`pParent${idx}`}>
+            <p className={`p${idx}`}>{pTag.innerHTML}</p>
+          </div>
+        );
+      })}
       <div className="endPresentationContainer">
         <h2 className="endPresentationTitle1">Vamos</h2>
         <div className="endPresentation">
@@ -64,7 +72,7 @@ const About: FC<AboutProps> = ({ image, description, portfolioExamples }) => {
             );
           })}
         </div>
-        <h2 className="endPresentationTitle2 "> criar</h2>
+        <h2 className="endPresentationTitle2"> criar</h2>
       </div>
     </article>
   );

@@ -15,6 +15,8 @@ type HomeProps = {
     {
       url: string;
       id: string;
+      width: number;
+      height: number;
     }
   ];
   conclusion: string;
@@ -37,6 +39,8 @@ export const useHome = () => {
             images {
               url
               id
+              width
+              height
             }
             conclusion
           }
@@ -78,7 +82,7 @@ export const useEssay = (slug: string) => {
         gql`
           query GetEssay($slug: String!) {
             photograph(where: { slug: $slug }) {
-              photos {
+              photos(first: 50) {
                 url
                 id
                 height

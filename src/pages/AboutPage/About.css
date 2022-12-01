@@ -29,9 +29,16 @@
   width: 100%;
 }
 
-.description p:first-of-type {
+.p0 {
+  font-size: 50px;
+  color: black;
+}
+
+.p1 {
   font-size: 30px;
   color: black;
+  max-width: 50%;
+  text-align: justify;
 }
 
 .endPresentationContainer {
