@@ -78,7 +78,7 @@ export const useEssay = (slug: string) => {
         gql`
           query GetEssay($slug: String!) {
             photograph(where: { slug: $slug }) {
-              photos {
+              photos(first: 50) {
                 url
                 id
                 height
