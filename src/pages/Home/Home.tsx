@@ -39,12 +39,15 @@ const Home: FC<HomeProps> = ({
     <>
       {images && (
         <div>
-          <div style={{ marginBottom: "-5em" }}>
-            <img className="homeImg" src={homeImage} alt="" />
+          <div className="homeBanner">
+            <img className="homeImg" loading="lazy" src={homeImage} alt="" />
             <div className="homeFirstParagraph">
               {paragraphs.map((pTag, idx) => {
                 return (
-                  <p style={{ margin: 0, textShadow: "5px 5px 35px black" }}>
+                  <p
+                    key={idx}
+                    style={{ margin: 0, textShadow: "5px 5px 35px black" }}
+                  >
                     {pTag.innerHTML}
                   </p>
                 );
@@ -57,8 +60,8 @@ const Home: FC<HomeProps> = ({
               <img className="secondParagraphImg" src={firstImage} alt="" />
             </div>
             <div className="imagesContainer">
-              {newImages?.map((image) => (
-                <img src={image.url} alt="" />
+              {newImages?.map((image, idx) => (
+                <img key={idx} src={image.url} alt="" />
               ))}
             </div>
             <img className="lastImg" src={lastImage?.url} alt="" />

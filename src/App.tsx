@@ -24,10 +24,10 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        light: "black",
-        main: "black",
-        dark: "black",
-        contrastText: "black",
+        light: "#000",
+        main: "#000",
+        dark: "#000",
+        contrastText: "#000",
       },
     },
   });

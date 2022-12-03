@@ -14,8 +14,8 @@
 .homeImg {
   width: 100%;
   object-fit: cover;
-  object-position: 50% 60%;
-  aspect-ratio: 3;
+  object-position: 50% 70%;
+  aspect-ratio: 2;
 }
 
 .homeFirstParagraph {
@@ -34,21 +34,11 @@
 .secondParagrahContainer {
   display: flex;
   gap: 5em;
-  margin-top: 50px;
   align-items: center;
 }
 
 .homeSecondParagraph {
-  font-size: 30px;
   text-align: justify;
-}
-
-.secondParagraphImg {
-  aspect-ratio: 5/4;
-  object-fit: cover;
-  justify-self: flex-end;
-  object-position: 0 25%;
-  width: 50%;
 }
 
 .imagesContainer {
@@ -73,11 +63,55 @@
   margin-top: 75px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 600px) {
+  .secondParagraphImg {
+    aspect-ratio: 5/4;
+    object-fit: cover;
+    justify-self: flex-end;
+    object-position: 0 25%;
+    width: 50%;
+  }
+
+  .homeBanner {
+    margin-bottom: -5em;
+  }
+
+  .homeSecondParagraph {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 600px) {
+  .homeImg {
+    height: 90vh;
+    object-position: 51% 70%;
+  }
+  .homeFirstParagraph {
+    margin-bottom: 0;
+    font-size: 1.5em;
+    margin-right: 0.5em;
+    padding-right: 0;
+    bottom: 150px;
+  }
   .homeContainer {
-    margin: 0;
+    margin: 0 0.5em;
+  }
+
+  .secondParagrahContainer {
+    flex-direction: column-reverse;
+  }
+
+  .secondParagraphImg {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  .homeSecondParagraph {
+    font-size: 1.5em;
+    margin: 0 0.5em;
+  }
+
+  .lastImg {
   }
 }
