@@ -14,9 +14,15 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 interface MenuItemsProps {
   pathname: string;
+  isMobile?: boolean;
+  handleDrawerClose?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
-const MenuItems: React.FC<MenuItemsProps> = ({ pathname }) => {
+const MenuItems: React.FC<MenuItemsProps> = ({
+  pathname,
+  isMobile,
+  handleDrawerClose,
+}) => {
   return (
     <ul className="navBarItems" aria-label="breadcrumb">
       <Link
@@ -24,25 +30,31 @@ const MenuItems: React.FC<MenuItemsProps> = ({ pathname }) => {
           navBarItemSelected: pathname === "/",
         })}
         to="/"
+        onClick={handleDrawerClose}
       >
         Home
       </Link>
+      {isMobile && <Divider sx={{ width: "50%" }} />}
       <Link
         className={classNames("navBarItem", {
           navBarItemSelected: pathname.includes("portfolio"),
         })}
         to="/portfolio"
+        onClick={handleDrawerClose}
       >
         Portfólio
       </Link>
+      {isMobile && <Divider sx={{ width: "75%" }} />}
       <Link
         className={classNames("navBarItem", {
           navBarItemSelected: pathname === "/about",
         })}
         to="/about"
+        onClick={handleDrawerClose}
       >
         Sobre mim
       </Link>
+      {isMobile && <Divider />}
     </ul>
   );
 };
@@ -52,21 +64,6 @@ const Menu: React.FC = () => {
   const isMobile = useMobile();
   const [open, setOpen] = useState(false);
 
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos && isMobile) {
-      document.getElementById("menuBar")!.style.top = "0";
-    } else {
-      document.getElementById("menuBar")!.style.top = "-100px";
-    }
-    prevScrollpos = currentScrollPos;
-  };
-
-  useEffect(() => {
-    handleDrawerClose();
-  }, [pathname]);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -75,10 +72,43 @@ const Menu: React.FC = () => {
     setOpen(false);
   };
 
+  const useScrollDirection = () => {
+    const [scrollDirection, setScrollDirection] = useState("");
+
+    useEffect(() => {
+      let lastScrollY = window.pageYOffset;
+
+      const updateScrollDirection = () => {
+        const scrollY = window.pageYOffset;
+        const direction = scrollY > lastScrollY ? "down" : "up";
+        if (
+          direction !== scrollDirection &&
+          (scrollY - lastScrollY > 3 || scrollY - lastScrollY < -3)
+        ) {
+          setScrollDirection(direction);
+        }
+        lastScrollY = scrollY > 0 ? scrollY : 0;
+      };
+      window.addEventListener("scroll", updateScrollDirection); // add event listener
+      return () => {
+        window.removeEventListener("scroll", updateScrollDirection); // clean up
+      };
+    }, [scrollDirection]);
+
+    return scrollDirection;
+  };
+
+  const scrollDirection = useScrollDirection();
+
   const drawerWidth = 240;
 
   return (
-    <div id="menuBar" className={classNames({ menuBarMobile: isMobile })}>
+    <div
+      className={classNames({
+        menuBarMobile: isMobile,
+        menuBarMobileDown: scrollDirection === "down",
+      })}
+    >
       {isMobile && (
         <div>
           <IconButton
@@ -100,21 +130,27 @@ const Menu: React.FC = () => {
                 boxSizing: "border-box",
               },
             }}
+            PaperProps={{
+              sx: {
+                borderRight: 0,
+              },
+            }}
             variant="persistent"
             anchor="left"
             open={open}
             onClose={handleDrawerClose}
           >
-            <div>
-              <IconButton
-                sx={{ margin: "0.5em 0" }}
-                onClick={handleDrawerClose}
-              >
+            <div onClick={handleDrawerClose}>
+              <IconButton sx={{ margin: "0.5em 0" }}>
                 <ChevronLeftIcon fontSize="large" />
               </IconButton>
             </div>
             <Divider />
-            <MenuItems pathname={pathname} />
+            <MenuItems
+              pathname={pathname}
+              isMobile={isMobile}
+              handleDrawerClose={handleDrawerClose}
+            />
           </Drawer>
         </div>
       )}
