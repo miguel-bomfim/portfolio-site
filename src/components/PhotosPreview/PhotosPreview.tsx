@@ -15,23 +15,23 @@ interface CardPreviewProps {
 }
 
 interface Posts {
-  posts: CardPreviewProps[];
+  portfolioData: CardPreviewProps[];
 }
 
-const PhotosPreview: FC<Posts> = ({ posts }) => {
+const PhotosPreview: FC<Posts> = ({ portfolioData }) => {
   return (
     <ImageList variant="masonry" cols={2}>
-      {posts?.map((post, idx) => (
+      {portfolioData?.map((portfolio, idx) => (
         <ImageListItem key={idx} className="imagePreviewContainer">
-          <Link key={post.slug} to={`/portfolio/${post?.slug}`}>
+          <Link key={portfolio.slug} to={`/portfolio/${portfolio?.slug}`}>
             <div>
               <img
                 className="imagePreview"
-                src={`${post.thumbnail.url}?w=248&fit=crop&auto=format`}
-                alt={post.title}
+                src={`${portfolio.thumbnail.url}?w=248&fit=crop&auto=format`}
+                alt={portfolio.title}
                 width="100%"
               />
-              <p className="imagePreviewLabel">{post.title}</p>
+              <p className="imagePreviewLabel">{portfolio.title}</p>
             </div>
           </Link>
         </ImageListItem>

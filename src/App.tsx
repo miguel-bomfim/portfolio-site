@@ -18,7 +18,8 @@ import Footer from "./components/Footer";
 
 function App() {
   const { data: homeData } = useHome();
-  const { data: posts } = usePortfolio();
+  const { data: portfolioData, isLoading: isLoadingPortfolio } = usePortfolio();
+
   const { data: aboutMe } = useAboutMe();
 
   const theme = createTheme({
@@ -53,7 +54,12 @@ function App() {
             />
             <Route
               path="/portfolio"
-              element={<PortfolioPage posts={posts} />}
+              element={
+                <PortfolioPage
+                  portfolioData={portfolioData}
+                  isLoading={isLoadingPortfolio}
+                />
+              }
             />
             <Route path="portfolio/:slug" element={<PortfolioPhotos />} />
             <Route

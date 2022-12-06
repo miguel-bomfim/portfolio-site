@@ -14,13 +14,14 @@ interface CardPreviewProps {
 }
 
 interface Posts {
-  posts: CardPreviewProps[];
+  portfolioData: CardPreviewProps[];
+  isLoading: boolean;
 }
 
-const Portfolio: FC<Posts> = ({ posts }) => {
+const Portfolio: FC<Posts> = ({ portfolioData, isLoading }) => {
   return (
     <div className="portfolioList">
-      <PhotosPreview posts={posts} />
+      {!isLoading && <PhotosPreview portfolioData={portfolioData} />}
       <Outlet />
     </div>
   );
