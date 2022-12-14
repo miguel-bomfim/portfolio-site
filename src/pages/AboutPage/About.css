@@ -32,13 +32,35 @@
 .p0 {
   font-size: 50px;
   color: black;
+  text-align: justify;
+}
+
+.paragraphOneDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paragraphOneImg {
+  width: 35%;
 }
 
 .p1 {
   font-size: 30px;
   color: black;
-  max-width: 50%;
+  max-width: 60%;
   text-align: justify;
+}
+
+.p2,
+.p3,
+.p4,
+.p5 {
+  font-size: 30px;
+}
+
+.p5 {
+  font-weight: bold;
 }
 
 .endPresentationContainer {
@@ -51,7 +73,7 @@
 .endPresentation {
   display: flex;
   justify-content: space-between;
-  gap: 10%;
+  gap: 5%;
   font-weight: bold;
 }
 
@@ -86,8 +108,20 @@
     font-size: 50px;
     z-index: 1;
     color: white;
+    text-align: left;
+  }
+  .p0 {
+    font-size: 30px;
+  }
+
+  .p1,
+  .p2,
+  .p3,
+  .p4,
+  .p5 {
+    font-size: 20px;
   }
   .aboutContainer {
-    margin: 0;
+    margin: 0 0.5em;
   }
 }

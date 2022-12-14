@@ -114,6 +114,9 @@ export const useAboutMe = () => {
               width
               height
             }
+            imgText {
+              url
+            }
             summary {
               html
             }

@@ -68,6 +68,7 @@ function App() {
                 <About
                   image={aboutMe?.photo}
                   description={aboutMe?.summary.html}
+                  imgText={aboutMe?.imgText}
                   portfolioExamples={aboutMe?.portfolioExamples}
                 />
               }
