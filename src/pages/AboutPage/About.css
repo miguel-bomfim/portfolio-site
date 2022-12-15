@@ -14,10 +14,7 @@
 
 .aboutHeaderTitle {
   margin: 0;
-  font-size: 100px;
   text-align: right;
-  top: -15px;
-  line-height: 100px;
   position: relative;
 }
 
@@ -37,7 +34,6 @@
 
 .paragraphOneDiv {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -64,8 +60,6 @@
 }
 
 .endPresentationContainer {
-  margin-top: 250px;
-  margin-bottom: 250px;
   display: flex;
   flex-direction: column;
 }
@@ -84,7 +78,6 @@
 
 .endPresentation img:nth-child(3) {
   position: relative;
-  top: -75px;
 }
 
 .endPresentationTitle1 {
@@ -109,12 +102,26 @@
     z-index: 1;
     color: white;
     text-align: left;
+    top: 0.25em;
   }
   .p0 {
     font-size: 30px;
   }
+  .paragraphOneDiv {
+    gap: 0.25em;
+  }
 
-  .p1,
+  .p1 {
+    font-size: 17px;
+    text-align: left;
+  }
+
+  .paragraphOneImg {
+    width: 45%;
+    aspect-ratio: 1/1.6;
+    object-fit: cover;
+  }
+
   .p2,
   .p3,
   .p4,
@@ -123,5 +130,49 @@
   }
   .aboutContainer {
     margin: 0 0.5em;
+  }
+
+  .endImage1 {
+    z-index: -1;
+  }
+
+  .endPresentationContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .endPresentation img:nth-child(1) {
+    position: relative;
+    top: -10px;
+    z-index: -1;
+  }
+
+  .endPresentation img:nth-child(2) {
+    top: 15px;
+  }
+
+  .endPresentation img:nth-child(4) {
+    position: relative;
+    top: -50px;
+  }
+}
+
+@media (min-width: 600px) {
+  .aboutHeaderTitle {
+    top: -15px;
+    line-height: 1.1em;
+    font-size: 4.5em;
+  }
+
+  .paragraphOneDiv {
+    justify-content: space-between;
+  }
+
+  .endPresentationContainer {
+    margin-top: 250px;
+    margin-bottom: 250px;
+  }
+  .endPresentation img:nth-child(3) {
+    top: -75px;
   }
 }
