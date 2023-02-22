@@ -4,29 +4,9 @@ import classNames from "classnames";
 import useMobile from "../../hooks/useMobile";
 import useDelay from "../../hooks/useDelay";
 import Loading from "../../components/Loading";
+import { AboutProps } from "./types";
 
 import "./About.css";
-interface AboutProps {
-  image:
-    | {
-        url: string;
-        width: string;
-        height: string;
-      }
-    | undefined;
-  description: string;
-  imgText: {
-    url: string;
-  };
-  portfolioExamples:
-    | [
-        {
-          url: string;
-          id: string;
-        }
-      ]
-    | undefined;
-}
 
 const About: FC<AboutProps> = ({
   image,

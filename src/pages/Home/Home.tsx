@@ -3,20 +3,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-interface HomeProps {
-  introduction: string | undefined;
-  homeImage: string | undefined;
-  developmentText: string | undefined;
-  images: ImagesProps[] | undefined;
-  conclusion: string | undefined;
-}
-
-interface ImagesProps {
-  url: string;
-  id: string;
-  height: number;
-  width: number;
-}
+import { HomeProps, ImagesProps } from "./types";
 
 const Home: FC<HomeProps> = ({
   introduction,

@@ -3,27 +3,8 @@ import { useQuery } from "react-query";
 
 const graphqlAPI = process.env.REACT_APP_PUBLIC_GRAPHCMS_ENDPOINT ?? "";
 
-type HomeProps = {
-  introduction: {
-    html: string;
-  };
-  homeImage: {
-    url: string;
-  };
-  developmentText: string;
-  images: [
-    {
-      url: string;
-      id: string;
-      width: number;
-      height: number;
-    }
-  ];
-  conclusion: string;
-};
-
 export const useHome = () => {
-  return useQuery<HomeProps>("get-home", async () => {
+  return useQuery("get-home", async () => {
     const { home } = await request(
       graphqlAPI,
       gql`
